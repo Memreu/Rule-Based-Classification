@@ -47,8 +47,8 @@ Bu proje kapsamında:
 2️⃣ Projeyi klonlayın veya indirin:  
 
 ```bash
-git clone https://github.com/kullaniciadi/proje-adi.git
-cd proje-adi
+git clone https://github.com/Memreu/Rule-Based-Classification.git
+cd Rule-Based-Classification
 ```
 
 3️⃣ Gerekli kütüphaneleri yükleyin:  
