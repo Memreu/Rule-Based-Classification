@@ -1,8 +1,8 @@
 # 🎯 Rule-Based Classification Projesi
 
-📌 Bu proje, Miull eğitimleri kapsamında verilen Kural Tabanlı Sınıflandırma ile Potansiyel Müşteri Getirisi Hesaplama ödevinin uygulanması ve üzerine yapılan ek geliştirmeleri içermektedir.
+📌 Bu proje, Miull eğitimleri kapsamında verilen Kural Tabanlı Sınıflandırma ile Potansiyel Müşteri Getirisi Hesaplama görevinin uygulanması ve üzerine yapılan ek geliştirmeleri içermektedir.
 Çalışma kapsamında, verilen veri seti üzerinde kural tabanlı segmentasyon teknikleri kullanılarak potansiyel müşteri grupları belirlenmiş, her grup için getiri tahminleri yapılmış ve sonuçlar tablolar ve grafikler aracılığıyla görselleştirilmiştir.
-Ayrıca proje, yalnızca ödev çözümü ile sınırlı kalmayıp, veri analizi sürecini daha esnek ve anlaşılır kılacak ek adımlar, optimizasyonlar ve görselleştirme geliştirmeleri ile zenginleştirilmiştir.
+Ayrıca proje, yalnızca görev çözümü ile sınırlı kalmayıp, veri analizi sürecini daha esnek ve anlaşılır kılacak ek adımlar, optimizasyonlar ve görselleştirme geliştirmeleri ile zenginleştirilmiştir.
 
 💻 **Jupyter Notebook** formatında geliştirilmiş olup, veri analizi, sınıflandırma ve görselleştirme adımlarını **adım adım** içermektedir.
 
