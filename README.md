@@ -13,8 +13,7 @@
 - [🚀 Kullanım](#-kullanım)  
 - [📊 Veri Seti](#-veri-seti)  
 - [📈 Sonuçlar](#-sonuçlar)  
-- [🔄 Çalışma Akışı](#-çalışma-akışı)  
-- [📜 Lisans](#-lisans)  
+- [🔄 Çalışma Akışı](#-çalışma-akışı)   
 
 ---
 
@@ -90,9 +89,6 @@ Kendi veri setinizi kullanmak için:
 2. Segment bazlı **fiyat analizi** yapıldı.  
 3. Sonuçlar **grafik** ve **tablo** formatında görselleştirildi.  
 
-📷 Örnek Görsel:  
-*(Buraya grafik ekran görüntüsü ekleyebilirsiniz)*
-
 ---
 
 ## 🔄 Çalışma Akışı
@@ -108,11 +104,3 @@ flowchart TD
     E --> F[Sonuçların Görselleştirilmesi]
 ```
 
-> Bu diyagram GitHub üzerinde otomatik olarak **grafik** şeklinde görüntülenecektir.
-
----
-
-## 📜 Lisans
-
-Bu proje, **MIT Lisansı** ile lisanslanmıştır.  
-Kullanırken kaynak belirtmeniz önerilir.
