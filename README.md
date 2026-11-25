@@ -1,109 +1,38 @@
-# 🎯 Rule-Based Classification Projesi
+# Gezinomi: Kural Tabanlı Sınıflandırma
 
-📌 Bu proje, Miull eğitimleri kapsamında verilen Kural Tabanlı Sınıflandırma ile Potansiyel Müşteri Getirisi Hesaplama görevinin uygulanması ve üzerine yapılan ek geliştirmeleri içermektedir.
-Çalışma kapsamında, verilen veri seti üzerinde kural tabanlı segmentasyon teknikleri kullanılarak potansiyel müşteri grupları belirlenmiş, her grup için getiri tahminleri yapılmış ve sonuçlar tablolar ve grafikler aracılığıyla görselleştirilmiştir.
-Ayrıca proje, yalnızca görev çözümü ile sınırlı kalmayıp, veri analizi sürecini daha esnek ve anlaşılır kılacak ek adımlar, optimizasyonlar ve görselleştirme geliştirmeleri ile zenginleştirilmiştir.
+Bu projede Gezinomi'nin satış verisi üzerinden kural tabanlı sınıflandırma ile potansiyel müşteri getirisi hesaplamaya çalıştım. Miuul bootcamp'i kapsamında verilen bir görevdi. Soru şuydu: şehir, otel konsepti ve sezon bilgisine bakarak yeni gelen bir müşterinin şirkete ortalama ne kadar kazandıracağını tahmin edebilir miyiz? Örneğin yoğun sezonda Antalya'da herşey dahil bir otele gitmek isteyen biri hangi segmente düşer?
 
-💻 **Jupyter Notebook** formatında geliştirilmiş olup, veri analizi, sınıflandırma ve görselleştirme adımlarını **adım adım** içermektedir.
+Veri `miuul_gezinomi.xlsx` dosyasında, bootcamp tarafından sağlandı. 59.164 satış ve 9 değişken var (satış tarihi, giriş tarihi, fiyat, konsept, şehir, giriş günü, satış ile giriş arasındaki gün farkı, sezon). Satışların büyük kısmı Antalya'da (31.649) ve konseptlerde de "Herşey Dahil" baskın (53.186).
 
----
+## Yaklaşım
 
-## 📚 İçindekiler
+Önce şehir ve konsept bazında satış sayılarına, toplam ve ortalama fiyatlara baktım. Ardından satış ile otele giriş arasındaki gün farkını `EB_Score` adında kategorik bir değişkene çevirdim (0-7 gün Last Minuters, 8-30 Potential Planners, 31-90 Planners, 90 üstü Early Bookers) ve fiyat ortalamalarını şehir, konsept ile bu değişken, sezon ve giriş günü kırılımlarında inceledim.
 
-- [📌 Proje Hakkında](#-proje-hakkında)  
-- [🛠 Kullanılan Teknolojiler](#-kullanılan-teknolojiler)  
-- [⚙️ Kurulum](#%EF%B8%8F-kurulum)  
-- [🚀 Kullanım](#-kullanım)  
-- [📊 Veri Seti](#-veri-seti)  
-- [📈 Sonuçlar](#-sonuçlar)  
-- [🔄 Çalışma Akışı](#-çalışma-akışı)   
+Asıl sınıflandırma şehir, konsept ve sezon üçlüsü üzerinden. Her kombinasyon için ortalama fiyatı hesaplayıp `ANTALYA_HERŞEY DAHIL_HIGH` gibi bir satış tanımı oluşturdum, sonra bu ortalamaları `qcut` ile dört çeyreğe bölüp D'den A'ya segmentler atadım.
 
----
+## Sonuçlar
 
-## 📌 Proje Hakkında
+Toplam 36 satış tanımı çıktı. Segmentlerin ortalama fiyatları şöyle:
 
-Bu proje kapsamında:  
+```
+SEGMENT  Ortalama  Maksimum
+D           33.37     39.48
+C           44.89     54.14
+B           60.27     64.92
+A           82.47    103.94
+```
 
-✅ Verilen veriler üzerinde **önceden tanımlanmış kurallara dayalı sınıflandırma** yapılmıştır.  
-✅ Farklı segmentasyonlar, fiyat analizleri ve karşılaştırmalar gerçekleştirilmiştir.  
-✅ Sonuçlar **grafikler** ve **tablolar** ile sunulmuştur.
+En yüksek ortalama Girne herşey dahil yoğun sezonda (103.94). Örnek soruya dönersek, `ANTALYA_HERŞEY DAHIL_HIGH` tanımı B segmentine düşüyor ve beklenen ortalama getiri 64.92.
 
-> 🔍 **Amaç:** Kural tabanlı yaklaşımlarla verileri anlamlı segmentlere ayırmak ve analiz etmektir.
+Benim için en öğretici kısım, bu kadar basit bir kuralın bile işe yarar bir sezgi verebilmesi ama aynı zamanda nerede yanıltabileceğini görmek oldu. Segmentler grup ortalamalarının çeyreklerine göre belirleniyor, gruplardaki satış sayısı hesaba katılmıyor. Antalya'daki 27 bin satırlık bir grupla Girne'deki birkaç yüz satırlık bir grup aynı ağırlıkta. Ayrıca yalnızca ortalamaya bakıldığı için grup içindeki fiyat dağılımı hakkında bir şey söylenmiyor.
 
----
-
-## 🛠 Kullanılan Teknolojiler
-
-| Teknoloji | Açıklama |
-|-----------|----------|
-| **Python 3.x** | Ana programlama dili |
-| **Jupyter Notebook** | Çalışma ortamı |
-| **Pandas** | Veri analizi |
-| **NumPy** | Sayısal hesaplamalar |
-| **Matplotlib / Seaborn** | Veri görselleştirme |
-
----
-
-## ⚙️ Kurulum
-
-1️⃣ **Python** ve **Jupyter Notebook** bilgisayarınızda kurulu değilse yükleyin.  
-2️⃣ Projeyi klonlayın veya indirin:  
+## Çalıştırmak için
 
 ```bash
-git clone https://github.com/Memreu/Rule-Based-Classification.git
-cd Rule-Based-Classification
+git clone https://github.com/Memreu/rule-based-classification-gezinomi.git
+cd rule-based-classification-gezinomi
+pip install -r requirements.txt
+jupyter notebook Rule-Based-Classification.ipynb
 ```
 
-3️⃣ Gerekli kütüphaneleri yükleyin:  
-
-```bash
-pip install pandas numpy matplotlib seaborn
-```
-
----
-
-## 🚀 Kullanım
-
-💡 **Notebook dosyası** içerisinde adım adım kod blokları ve açıklamalar mevcuttur.  
-
-1. `rule_based_classification.ipynb` dosyasını Jupyter Notebook ile açın.  
-2. Kod hücrelerini **sırasıyla çalıştırın**.  
-3. Kendi verinizi kullanmak isterseniz veri yükleme adımındaki **dosya yolunu** değiştirin.  
-
-> ⚠️ Notebook içerisinde **örnek veri seti** yüklüdür, fakat kendi verilerinizle de kolayca çalıştırabilirsiniz.
-
----
-
-## 📊 Veri Seti
-
-📂 Veri seti, **fiyat** ve **segmentasyon bilgilerini** içeren tablolardan oluşur.  
-Kendi veri setinizi kullanmak için:
-
-- Notebook içindeki veri yükleme kısmını düzenleyin  
-- CSV, Excel veya başka formatlarda veri yükleyebilirsiniz  
-
----
-
-## 📈 Sonuçlar
-
-📌 Proje sonucunda:  
-
-1. Veriler, belirlenen **kurallara göre segmentlere** ayrıldı.  
-2. Segment bazlı **fiyat analizi** yapıldı.  
-3. Sonuçlar **grafik** ve **tablo** formatında görselleştirildi.  
-
----
-
-## 🔄 Çalışma Akışı
-
-Aşağıda, projenin genel işleyişini gösteren bir akış diyagramı bulunmaktadır:  
-
-```mermaid
-flowchart TD
-    A[Veri Seti Yükleme] --> B[Veri Ön İşleme]
-    B --> C[Kural Tabanlı Sınıflandırma]
-    C --> D[Segmentlere Ayırma]
-    D --> E[Fiyat Analizi]
-    E --> F[Sonuçların Görselleştirilmesi]
-```
-
+Bir sonraki adım olarak segmentleri satış sayısıyla ağırlıklandırmayı ve az gözlemli grupları birleştirmeyi denemek isterim. `EB_Score` değişkenini satış tanımına eklemek de segmentleri daha anlamlı hale getirebilir.
