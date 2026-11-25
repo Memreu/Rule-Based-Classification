@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+build/
+dist/
+
+# Ortamlar
+.venv/
+venv/
+env/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Editör / sistem
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# notebook çalışınca oluşan ara çıktı
+eb_scorew.xlsx
