@@ -29,8 +29,8 @@ Benim için en öğretici kısım, bu kadar basit bir kuralın bile işe yarar b
 ## Çalıştırmak için
 
 ```bash
-git clone https://github.com/Memreu/rule-based-classification-gezinomi.git
-cd rule-based-classification-gezinomi
+git clone https://github.com/Memreu/Rule-Based-Classification.git
+cd Rule-Based-Classification
 pip install -r requirements.txt
 jupyter notebook Rule-Based-Classification.ipynb
 ```
